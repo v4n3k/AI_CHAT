@@ -1,0 +1,1 @@
+export { AIModelCard } from './AiModelCard';

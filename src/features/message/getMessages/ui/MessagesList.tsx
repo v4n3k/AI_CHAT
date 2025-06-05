@@ -1,5 +1,5 @@
+import type { Message } from '@entities/aiModel/types';
 import { MessageItem } from '@entities/message/ui';
-import type { Message } from '@entities/model/types';
 
 interface MessagesListProps {
 	messages: Message[];

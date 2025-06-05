@@ -1,4 +1,4 @@
-import type { Message } from '@entities/model/types';
+import type { Message } from '@entities/aiModel/types';
 
 export const MessageItem = ({ from, content }: Message) => {
 	const fromStyles = {

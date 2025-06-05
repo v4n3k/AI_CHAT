@@ -1,4 +1,4 @@
-import { OpenAi } from '@shared/api';
+import { Axios, handleApiResponse, OpenAi } from '@shared/api';
 
 export const createChatCompletion = async (content: string) => {
 	try {
@@ -16,4 +16,8 @@ export const createChatCompletion = async (content: string) => {
 	} catch (error) {
 		console.error('Error creating chat completion:', error);
 	}
+};
+
+export const getAiModels = async () => {
+	return await handleApiResponse(Axios.get('/ai_models'));
 };

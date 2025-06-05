@@ -1,4 +1,4 @@
-import type { Message } from '@entities/model/types';
+import type { Message } from '@entities/aiModel/types';
 import { Axios, handleApiResponse } from '@shared/api';
 
 export const getMessagesByChatId = async (chatId: string | number) => {

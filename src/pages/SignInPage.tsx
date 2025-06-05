@@ -1,4 +1,4 @@
-import { SignInWidget } from '@widgets/auth/SignInWidget';
+import { SignInWidget } from '@widgets/index';
 
 export const SignInPage = () => {
 	return (

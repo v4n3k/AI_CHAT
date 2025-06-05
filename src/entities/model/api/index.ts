@@ -1,1 +1,1 @@
-export { createChatCompletion } from '@entities/model/api/api';
+export { createChatCompletion } from '@entities/aiModel/api/api';

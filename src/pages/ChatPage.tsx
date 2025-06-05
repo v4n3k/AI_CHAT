@@ -1,5 +1,4 @@
-import { SendMessageWidget } from '@widgets/index';
-import { MessagesListWidget } from '@widgets/message/MessagesListWidget';
+import { MessagesListWidget, SendMessageWidget } from '@widgets/index';
 
 export const ChatPage = () => {
 	return (

@@ -20,37 +20,39 @@ export const AuthForm = <T,>({
 }: AuthFormProps<
 	T extends SignUpCredentials ? SignUpCredentials : SignInCredentials
 >) => {
+	const { login, password } = credentials;
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		onSubmit(credentials);
 	};
 
-	const { login, password } = credentials;
-
-	const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setCredentials({ ...credentials, login: e.target.value });
-	};
-
-	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setCredentials({ ...credentials, password: e.target.value });
+	const handleFormChange = (
+		key: keyof typeof credentials,
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setCredentials({ ...credentials, [key]: e.target.value });
 	};
 
 	return (
 		<form
-			className='flex flex-col gap-4 w-full max-w-lg mx-auto border border-slate-500 rounded-xl p-10'
+			className='
+				flex flex-col gap-4 w-full max-w-lg mx-auto border border-slate-500
+				rounded-xl p-10
+			'
 			onSubmit={handleSubmit}
 		>
 			<h2 className='text-white text-2xl text-center'>Auth</h2>
 			<TextField
 				placeholder='Email'
 				value={login}
-				onChange={handleLoginChange}
+				onChange={e => handleFormChange('login', e)}
 			/>
 			<TextField
 				placeholder='Password'
 				type='password'
 				value={password}
-				onChange={handlePasswordChange}
+				onChange={e => handleFormChange('password', e)}
 			/>
 			<Button type='submit'>{action}</Button>
 			<Link
