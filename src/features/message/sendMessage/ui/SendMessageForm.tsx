@@ -22,7 +22,7 @@ export const SendMessageForm = <T,>({
 
 	return (
 		<form
-			className='flex gap-2 w-full max-w-4xl fixed bottom-4 '
+			className='flex gap-2 w-full max-w-6xl fixed bottom-4 '
 			onSubmit={handleSubmit}
 		>
 			<TextArea
