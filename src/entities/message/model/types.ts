@@ -1,6 +1,6 @@
 export interface Message {
-	id: string | number;
+	id: number | string;
 	chatId: number;
-	from: 'model' | 'user' | 'error';
+	from: 'user' | 'model';
 	content: string;
 }

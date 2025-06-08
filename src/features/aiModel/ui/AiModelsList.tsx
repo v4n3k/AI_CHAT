@@ -1,5 +1,5 @@
-import type { AiModel } from '@entities/aiModel/model';
 import { AIModelCard } from '@entities/aiModel/ui';
+import type { AiModel } from '@entities/message/model';
 import { Section, Title } from '@shared/ui';
 
 interface AiModelsListProps {

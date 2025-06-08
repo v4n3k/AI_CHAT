@@ -1,4 +1,4 @@
-import type { AiModel } from '../model';
+import type { AiModel } from '../../message/model';
 
 interface AiModelCardProps {
 	model: AiModel;

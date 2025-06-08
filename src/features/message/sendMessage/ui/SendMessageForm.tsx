@@ -21,10 +21,7 @@ export const SendMessageForm = <T,>({
 	};
 
 	return (
-		<form
-			className='flex gap-2 w-full max-w-6xl fixed bottom-4 '
-			onSubmit={handleSubmit}
-		>
+		<form className='flex gap-2 w-full stciky mb-4' onSubmit={handleSubmit}>
 			<TextArea
 				placeholder='Ask AI...'
 				value={message}

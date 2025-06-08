@@ -1,7 +1,9 @@
-import type { Message } from '@entities/aiModel/types';
+import type { Message } from '@entities/message/model';
 import { Axios, handleApiResponse } from '@shared/api';
 
-export const getMessagesByChatId = async (chatId: string | number) => {
+export const getMessagesByChatId = async (
+	chatId: string | number
+): Promise<Message[]> => {
 	return await handleApiResponse(Axios.get(`/messages/${chatId}`));
 };
 

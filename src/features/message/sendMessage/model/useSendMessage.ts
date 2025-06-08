@@ -1,5 +1,5 @@
 import { createChatCompletion } from '@entities/aiModel/api';
-import type { Message } from '@entities/aiModel/types';
+import type { Message } from '@entities/message/model';
 import { saveMessage } from '@entities/message/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';

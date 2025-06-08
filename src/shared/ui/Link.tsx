@@ -6,12 +6,12 @@ interface LinkProps extends React.ComponentProps<typeof RRDLink> {
 	color?: 'accent' | 'primary';
 }
 
-export const Link = ({ color = 'accent', className, ...props }: LinkProps) => {
-	const classNames = {
-		accent: 'text-sky-500 hover:text-sky-400',
-		primary: 'text-white hover:text-slate-200',
-	};
+const classNames = {
+	accent: 'text-sky-500 hover:text-sky-400',
+	primary: 'text-white hover:text-slate-200',
+};
 
+export const Link = ({ color = 'accent', className, ...props }: LinkProps) => {
 	return (
 		<RRDLink
 			{...props}
