@@ -7,6 +7,6 @@ interface SectionProps extends ComponentProps<'section'> {
 
 export const Section = ({ className, children }: SectionProps) => {
 	return (
-		<section className={clsx(className, 'mb-8')}>{children}</section>
+		<section className={clsx(className, 'mb-10')}>{children}</section>
 	)
 }

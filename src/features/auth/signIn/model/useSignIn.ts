@@ -15,7 +15,9 @@ export const useSignIn = () => {
 	const mutation = useMutation({
 		mutationFn: (credentials: SignInCredentials) => signIn(credentials),
 
-		onSuccess: () => {
+		onSuccess: data => {
+			localStorage.setItem('userId', data.userId.toString());
+			localStorage.setItem('login', data.login);
 			setCredentials({ login: '', password: '' });
 			navigate(ROUTE_PATHS.HOME);
 		},

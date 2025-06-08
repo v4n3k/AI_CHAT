@@ -6,6 +6,7 @@ const API_KEY = import.meta.env.VITE_AI_API_KEY;
 
 export const Axios = axios.create({
 	baseURL: 'http://localhost:4200/api',
+	withCredentials: true,
 	headers: {
 		'Content-Type': 'application/json',
 	},

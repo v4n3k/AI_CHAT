@@ -17,7 +17,7 @@ export const SignInForm = ({
 			action='Sign in'
 			credentials={credentials}
 			setCredentials={setCredentials}
-			onSubmit={onSubmit}
+			onSubmit={() => onSubmit(credentials)}
 		/>
 	);
 };
