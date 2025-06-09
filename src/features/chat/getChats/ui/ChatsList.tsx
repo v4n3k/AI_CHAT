@@ -7,12 +7,12 @@ interface ChatsListProps {
 
 export const ChatsList = ({ chats }: ChatsListProps) => {
 	return (
-		<aside>
-			<ul className='flex flex-col gap-2 w-full'>
+		<>
+			<ul className='flex flex-col gap-2 max-w-1/4 w-full h-[calc(100%-16px)] overflow-y-auto scrollbar-none'>
 				{chats?.map(chat => (
 					<ChatItem key={chat.id} {...chat} />
 				))}
 			</ul>
-		</aside>
+		</>
 	);
 };

@@ -23,7 +23,7 @@ export const HomePage = () => {
 
 			{isAuth && (
 				<Button className='px-10 mx-auto mb-6' onClick={handleClick}>
-					{chats.length <= 0 ? 'Explore AI Models' : 'My chats'}
+					{chats?.length <= 0 ? 'Explore AI Models' : 'My chats'}
 				</Button>
 			)}
 		</>

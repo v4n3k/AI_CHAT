@@ -6,7 +6,10 @@ const classNames = {
 	error: 'bg-red-500',
 };
 
-export const MessageItem = ({ from, content }: Message) => {
+export const MessageItem = ({
+	from,
+	content,
+}: Pick<Message, 'from' | 'content'>) => {
 	return (
 		<li
 			className={`flex max-w-3/4 w-fit py-2 px-3 rounded-xl text-lg ${classNames[from]}`}

@@ -1,6 +1,7 @@
+import { ROUTE_PATHS } from '@app/routes';
 import type { Message } from '@entities/message/model';
 import clsx from 'clsx';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import type { Chat } from '../model';
 
 const contentClassNames: Record<Message['from'], string> = {
@@ -9,9 +10,14 @@ const contentClassNames: Record<Message['from'], string> = {
 };
 
 export const ChatItem = ({ id, modelName, lastMessage }: Chat) => {
+	const navigate = useNavigate();
 	const selectedChatId = useParams().id;
 
 	const isSelected = selectedChatId === id.toString();
+
+	const handleClick = () => {
+		navigate(ROUTE_PATHS.CHAT.replace(':id', id.toString()));
+	};
 
 	return (
 		<li
@@ -28,8 +34,9 @@ export const ChatItem = ({ id, modelName, lastMessage }: Chat) => {
         cursor-pointer
         text-slate-200
       `,
-				isSelected && 'bg-slate-700'
+				isSelected ? 'bg-slate-700' : 'bg-slate-800'
 			)}
+			onClick={handleClick}
 		>
 			<h3
 				className='

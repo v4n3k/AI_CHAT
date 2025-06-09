@@ -1,6 +1,6 @@
 import { createChatCompletion } from '@entities/aiModel/api';
-import type { Message } from '@entities/message/model';
 import { saveMessage } from '@entities/message/api';
+import type { Message } from '@entities/message/model';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -8,8 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const useSendMessage = () => {
 	const queryClient = useQueryClient();
-	const { id } = useParams();
-	const chatId = Number(id);
+	const chatId = Number(useParams().id);
+
 	const [messageContent, setMessageContent] = useState('');
 
 	const saveMutation = useMutation({
@@ -35,6 +35,7 @@ export const useSendMessage = () => {
 
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['messages', chatId] });
+			queryClient.invalidateQueries({ queryKey: ['chats'] });
 		},
 
 		onError: (_, __, context) => {

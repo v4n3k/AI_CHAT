@@ -17,6 +17,6 @@ export const Button = ({ className, variant = 'primary', ...props }: ButtonProps
 
 
 	return (
-	<button {...props} className={clsx(className, classNames[variant], ' text-xl p-2 rounded-lg cursor-pointer transition-colors duration-200')} />
+	<button {...props} className={clsx(className, classNames[variant], ' text-xl p-2 px-3 rounded-lg cursor-pointer transition-colors duration-200')} />
 	)
 }

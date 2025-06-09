@@ -1,12 +1,17 @@
+import { useModelStore } from '@entities/aiModel/model/store';
 import type { Message } from '@entities/message/model';
-import { MessageItem } from '@entities/message/ui';
+import { LoadingMessageItem, MessageItem } from '@entities/message/ui';
 import { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 interface MessagesListProps {
 	messages: Message[];
 }
 
 export const MessagesList = ({ messages }: MessagesListProps) => {
+	const isMessageLoading = useModelStore(state => state.isMessageLoading);
+	const chatId = Number(useParams().id);
+
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const isFirstRender = useRef(true);
 
@@ -35,6 +40,9 @@ export const MessagesList = ({ messages }: MessagesListProps) => {
 				{messages?.map(message => (
 					<MessageItem key={message.id} {...message} />
 				))}
+				{isMessageLoading && messages?.at(-1)?.chatId === chatId && (
+					<LoadingMessageItem />
+				)}
 			</ul>
 			<div ref={scrollRef} />
 		</div>

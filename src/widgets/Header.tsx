@@ -18,7 +18,7 @@ export const Header = () => {
 
 	return (
 		<header className='sticky top-0 bg-slate-800 p-4'>
-			<div className='flex items-center justify-between max-w-6xl mx-auto'>
+			<div className='flex items-center justify-between max-w-6xl mx-auto px-4'>
 				<Link
 					className='text-2xl font-bold'
 					color='primary'
