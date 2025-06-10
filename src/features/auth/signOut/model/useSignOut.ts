@@ -1,6 +1,7 @@
 import { ROUTE_PATHS } from '@app/routes';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { signOut } from '../api';
 
 export const useSignOut = () => {
@@ -14,6 +15,12 @@ export const useSignOut = () => {
 			localStorage.removeItem('login');
 
 			navigate(ROUTE_PATHS.SIGN_IN);
+
+			toast.success('You have been signed out successfully!');
+		},
+
+		onError: () => {
+			toast.error('Error signing out');
 		},
 	});
 

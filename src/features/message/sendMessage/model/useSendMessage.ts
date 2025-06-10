@@ -4,6 +4,7 @@ import type { Message } from '@entities/message/model';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 
 export const useSendMessage = () => {
@@ -45,6 +46,8 @@ export const useSendMessage = () => {
 					context.previousMessages
 				);
 			}
+
+			toast.error('Error saving message');
 		},
 	});
 
@@ -66,6 +69,8 @@ export const useSendMessage = () => {
 
 		onError: error => {
 			console.error('aiMutation - onError: Failed to get AI response:', error);
+
+			toast.error('Error getting AI response');
 		},
 	});
 

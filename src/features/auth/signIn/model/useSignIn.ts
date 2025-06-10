@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../api';
 import type { SignInCredentials } from './types';
+import { toast } from 'react-toastify';
 
 export const useSignIn = () => {
 	const navigate = useNavigate();
@@ -18,8 +19,16 @@ export const useSignIn = () => {
 		onSuccess: data => {
 			localStorage.setItem('userId', data.userId.toString());
 			localStorage.setItem('login', data.login);
+
 			setCredentials({ login: '', password: '' });
+
 			navigate(ROUTE_PATHS.HOME);
+
+			toast.success('You have been signed in successfully!');
+		},
+
+		onError: () => {
+			toast.error('Error signing in');
 		},
 	});
 

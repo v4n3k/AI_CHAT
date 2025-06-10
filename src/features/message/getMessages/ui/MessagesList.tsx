@@ -16,8 +16,6 @@ export const MessagesList = ({ messages }: MessagesListProps) => {
 	const isFirstRender = useRef(true);
 
 	useEffect(() => {
-		console.log('render');
-
 		const scrollToBottom = () => {
 			if (scrollRef.current) {
 				scrollRef.current.scrollIntoView({

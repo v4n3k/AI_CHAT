@@ -44,7 +44,7 @@ export const AuthForm = <T,>({
 		>
 			<h2 className='text-white text-2xl text-center'>Auth</h2>
 			<TextField
-				placeholder='Email'
+				placeholder='Login'
 				value={login}
 				onChange={e => handleFormChange('login', e)}
 			/>

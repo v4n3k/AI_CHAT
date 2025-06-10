@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+.Toastify__toast {
+	@apply bg-slate-700 text-white rounded-lg shadow-md;
+
+	padding: 1rem !important;
+	min-height: 3rem !important;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.Toastify__toast-body {
+	@apply flex items-center gap-3;
+
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.Toastify__toast-container--top-center {
+	top: 2rem !important;
+}
+
+.Toastify__progress-bar {
+	@apply bg-white;
+}
+
+.Toastify__progress-bar--success {
+	@apply bg-green-500;
+}
+.Toastify__progress-bar--error {
+	@apply bg-red-500;
+}
+.Toastify__progress-bar--info {
+	@apply bg-blue-500;
+}
+.Toastify__progress-bar--warning {
+	@apply bg-yellow-500;
+}
+
+.Toastify__close-button {
+	@apply text-white opacity-75 hover:opacity-100;
+	font-size: 2rem !important;
+}
