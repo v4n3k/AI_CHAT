@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import { type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
-interface TextAreaProps
-	extends ComponentProps<'textarea'> {
+interface TextAreaProps extends ComponentProps<'textarea'> {
 	className?: string;
 }
 

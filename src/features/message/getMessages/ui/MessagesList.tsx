@@ -32,6 +32,10 @@ export const MessagesList = ({ messages }: MessagesListProps) => {
 		return () => clearTimeout(timeoutId);
 	}, [messages.length]);
 
+	useEffect(() => {
+		console.log(messages?.at(-1)?.chatId, chatId);
+	}, [messages, chatId]);
+
 	return (
 		<div className='flex flex-col gap-2 w-full h-[calc(100vh-80px)] overflow-y-auto scrollbar-none'>
 			<ul className='flex flex-col gap-2 w-full'>

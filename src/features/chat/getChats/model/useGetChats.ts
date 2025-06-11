@@ -1,4 +1,4 @@
-import { getChatsByUserId } from '@entities/chat/api/api';
+import { getChatsByUserId } from '@entities/chat/api';
 import { useUserData } from '@entities/user/model';
 import { useQuery } from '@tanstack/react-query';
 

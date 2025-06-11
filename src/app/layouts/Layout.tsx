@@ -1,5 +1,5 @@
 import { Header } from '@widgets/Header';
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
@@ -7,7 +7,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-	const {pathname} = useLocation();
+	const { pathname } = useLocation();
 	const isAuthPage = pathname.includes('sign');
 
 	return (
@@ -16,6 +16,6 @@ export const Layout = ({ children }: LayoutProps) => {
 			<main className='flex flex-col w-full max-w-6xl h-full mx-auto px-4'>
 				{children}
 			</main>
-		</div>   
-	)
-}
+		</div>
+	);
+};

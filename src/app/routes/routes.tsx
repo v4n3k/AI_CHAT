@@ -2,7 +2,7 @@ import { ChatPage, HomePage, SignInPage, SignUpPage } from '@pages/index';
 
 export const ROUTE_PATHS = {
 	HOME: '/',
-	CHAT: '/chat/:id',
+	CHAT: '/chats/:id',
 	SIGN_UP: '/sign_up',
 	SIGN_IN: '/sign_in',
 } as const;
