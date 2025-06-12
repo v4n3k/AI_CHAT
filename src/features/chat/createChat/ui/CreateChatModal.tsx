@@ -1,11 +1,11 @@
+import { useModelStore } from '@entities/aiModel/model/store';
 import { Button, Modal, Title } from '@shared/ui';
 import { Select } from '@shared/ui/Select';
-import { useState } from 'react';
 
 interface CreateChatModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	onCreate: (modelName: string) => void;
+	onCreate: (model: string) => void;
 }
 
 export const CreateChatModal = ({
@@ -28,7 +28,12 @@ export const CreateChatModal = ({
 		},
 	];
 
-	const [modelName, setModelName] = useState(models[0].value);
+	const model = useModelStore(state => state.model);
+	const setModel = useModelStore(state => state.setModel);
+
+	const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setModel(e.target.value);
+	};
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose}>
@@ -36,12 +41,8 @@ export const CreateChatModal = ({
 				Create a new chat
 			</Title>
 			<form className='flex flex-col gap-4'>
-				<Select
-					value={modelName}
-					onChange={e => setModelName(e.target.value)}
-					options={models}
-				/>
-				<Button onClick={() => onCreate(modelName)}>Create</Button>
+				<Select value={model} onChange={handleModelChange} options={models} />
+				<Button onClick={() => onCreate(model)}>Create</Button>
 			</form>
 		</Modal>
 	);

@@ -1,8 +1,11 @@
 import { createChatCompletion } from '@entities/aiModel/api';
+import type { CreateChatCompletionParams } from '@entities/aiModel/model';
+import { getChatById } from '@entities/chat/api';
+import type { Chat } from '@entities/chat/model';
 import { saveMessage } from '@entities/message/api';
 import type { Message } from '@entities/message/model';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,6 +15,15 @@ export const useSendMessage = () => {
 	const chatId = Number(useParams().id);
 
 	const [messageContent, setMessageContent] = useState('');
+
+	const { data: chat } = useQuery<Chat>({
+		queryKey: ['chat', chatId],
+		queryFn: () => getChatById(chatId),
+	});
+
+	useEffect(() => {
+		console.log(chat);
+	}, [chat, messageContent]);
 
 	const saveMutation = useMutation({
 		mutationFn: (message: Message) => {
@@ -52,8 +64,8 @@ export const useSendMessage = () => {
 	});
 
 	const aiMutation = useMutation({
-		mutationFn: (userMessageContent: string) => {
-			return createChatCompletion(userMessageContent);
+		mutationFn: ({ model, content }: CreateChatCompletionParams) => {
+			return createChatCompletion({ model, content });
 		},
 
 		onSuccess: data => {
@@ -86,7 +98,11 @@ export const useSendMessage = () => {
 		setMessageContent('');
 
 		saveMutation.mutate(userMessage);
-		aiMutation.mutate(userMessage.content);
+
+		aiMutation.mutate({
+			model: chat?.model ?? '',
+			content: userMessage.content,
+		});
 	};
 
 	return {

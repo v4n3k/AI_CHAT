@@ -3,3 +3,8 @@ export interface AiModel {
 	description: string;
 	useCases: string;
 }
+
+export interface CreateChatCompletionParams {
+	model: string;
+	content: string;
+}

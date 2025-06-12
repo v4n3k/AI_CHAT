@@ -1,14 +1,20 @@
 import { useCreateChat } from '@features/chat/createChat/model';
 import { CreateChatModal } from '@features/chat/createChat/ui';
+import { useGetChat } from '@features/chat/getChat/model';
 import { useGetChats } from '@features/chat/getChats/model';
 import { ChatsList } from '@features/chat/getChats/ui';
 import { Button } from '@shared/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const ChatsListWidget = () => {
+	const {} = useGetChat();
 	const { chats } = useGetChats();
 	const { createChat } = useCreateChat();
 	const [isOpen, setIsOpen] = useState(false);
+
+	useEffect(() => {
+		console.log(chats);
+	}, [chats]);
 
 	const handleOpen = () => {
 		setIsOpen(true);

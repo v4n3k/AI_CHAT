@@ -1,12 +1,16 @@
 import { Axios, handleApiResponse, OpenAi } from '@shared/api';
+import type { CreateChatCompletionParams } from '../model';
 import { useModelStore } from '../model/store';
 
-export const createChatCompletion = async (content: string) => {
+export const createChatCompletion = async ({
+	model,
+	content,
+}: CreateChatCompletionParams) => {
 	useModelStore.setState({ isMessageLoading: true });
 
 	try {
 		const completion = await OpenAi.chat.completions.create({
-			model: 'google/gemma-3n-e4b-it:free',
+			model,
 			messages: [
 				{
 					role: 'user',

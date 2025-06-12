@@ -1,1 +1,1 @@
-export { createChat, getChatsByUserId } from './api';
+export { createChat, getChatById, getChatsByUserId } from './api';

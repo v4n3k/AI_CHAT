@@ -6,11 +6,12 @@ export const useCreateChat = () => {
 	const { userId } = useUserData();
 
 	const mutation = useMutation({
-		mutationFn: (modelName: string) => createChat({ userId, modelName }),
+		mutationFn: (model: string) => createChat({ userId, model }),
 	});
 
 	return {
 		createChat: mutation.mutate,
+		createChatAsync: mutation.mutateAsync,
 		...mutation,
 	};
 };

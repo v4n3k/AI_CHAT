@@ -4,6 +4,6 @@ import type { UserId } from '@entities/user/model';
 export interface Chat {
 	id: number;
 	userId: UserId;
-	modelName: string;
+	model: string;
 	lastMessage: Message | null;
 }

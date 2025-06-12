@@ -1,1 +1,1 @@
-export type { AiModel } from './types';
+export type { AiModel, CreateChatCompletionParams } from './types';

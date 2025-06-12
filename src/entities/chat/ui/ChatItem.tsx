@@ -9,8 +9,9 @@ const contentClassNames: Record<Message['from'], string> = {
 	model: 'text-sky-500',
 };
 
-export const ChatItem = ({ id, modelName, lastMessage }: Chat) => {
+export const ChatItem = ({ id, model, lastMessage }: Chat) => {
 	const navigate = useNavigate();
+
 	const selectedChatId = useParams().id;
 
 	const isSelected = selectedChatId === id.toString();
@@ -46,7 +47,7 @@ export const ChatItem = ({ id, modelName, lastMessage }: Chat) => {
         mb-1
       '
 			>
-				{modelName}
+				{model}
 			</h3>
 
 			{lastMessage ? (
