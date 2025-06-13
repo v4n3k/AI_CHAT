@@ -9,7 +9,7 @@ const contentClassNames: Record<Message['from'], string> = {
 	model: 'text-sky-500',
 };
 
-export const ChatItem = ({ id, model, lastMessage }: Chat) => {
+export const ChatItem = ({ id, shortModel, lastMessage }: Chat) => {
 	const navigate = useNavigate();
 
 	const selectedChatId = useParams().id;
@@ -47,7 +47,7 @@ export const ChatItem = ({ id, model, lastMessage }: Chat) => {
         mb-1
       '
 			>
-				{model}
+				{shortModel}
 			</h3>
 
 			{lastMessage ? (

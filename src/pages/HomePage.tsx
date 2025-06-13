@@ -1,4 +1,5 @@
 import { ROUTE_PATHS } from '@app/routes';
+import { models } from '@entities/aiModel/data';
 import type { Chat } from '@entities/chat/model';
 import { useUserData } from '@entities/user/model';
 import { useCreateChat } from '@features/chat/createChat/model';
@@ -18,7 +19,10 @@ export const HomePage = () => {
 	const handleClick = async () => {
 		try {
 			if (!chats.length) {
-				await createChatAsync('google/gemma-3n-e4b-it:free');
+				await createChatAsync({
+					model: models[0].value,
+					shortModel: models[0].label,
+				});
 				await queryClient.invalidateQueries({ queryKey: ['chats'] });
 
 				const updatedChats = queryClient.getQueryData<Chat[]>(['chats']);

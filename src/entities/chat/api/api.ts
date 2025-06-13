@@ -13,6 +13,9 @@ export const getChatById = async (id: number) => {
 export const createChat = async ({
 	userId,
 	model,
-}: Pick<Chat, 'userId' | 'model'>) => {
-	return await handleApiResponse(Axios.post('/chats', { userId, model }));
+	shortModel,
+}: Pick<Chat, 'userId' | 'model' | 'shortModel'>) => {
+	return await handleApiResponse(
+		Axios.post('/chats', { userId, model, shortModel })
+	);
 };

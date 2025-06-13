@@ -6,6 +6,9 @@ interface ModelStore {
 
 	model: string;
 	setModel: (model: string) => void;
+
+	shortModel: string;
+	setShortModel: (shortModel: string) => void;
 }
 
 export const useModelStore = create<ModelStore>(set => ({
@@ -14,4 +17,7 @@ export const useModelStore = create<ModelStore>(set => ({
 
 	model: '',
 	setModel: (model: string) => set({ model }),
+
+	shortModel: '',
+	setShortModel: (shortModel: string) => set({ shortModel }),
 }));

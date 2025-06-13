@@ -1,4 +1,5 @@
 import type { Message } from '@entities/message/model';
+import clsx from 'clsx';
 
 const classNames = {
 	model: 'bg-sky-600 text-slate-300 mr-auto',
@@ -12,7 +13,10 @@ export const MessageItem = ({
 }: Pick<Message, 'from' | 'content'>) => {
 	return (
 		<li
-			className={`flex max-w-3/4 w-fit py-2 px-3 rounded-xl text-lg ${classNames[from]}`}
+			className={clsx(
+				'flex max-w-3/4 w-fit py-2 px-3 rounded-xl text-lg',
+				classNames[from]
+			)}
 		>
 			<p>{content}</p>
 		</li>

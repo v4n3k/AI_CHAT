@@ -1,5 +1,6 @@
 interface Option {
 	id: number;
+	label: string;
 	value: string;
 }
 
@@ -18,7 +19,7 @@ export const Select = ({ options, value, onChange }: SelectProps) => {
 		>
 			{options.map(option => (
 				<option key={option.id} value={option.value}>
-					{option.value}
+					{option.label}
 				</option>
 			))}
 		</select>

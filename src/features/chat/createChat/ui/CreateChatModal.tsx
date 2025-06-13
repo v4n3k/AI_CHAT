@@ -1,11 +1,14 @@
+import { models } from '@entities/aiModel/data';
 import { useModelStore } from '@entities/aiModel/model/store';
+import type { CreateChatParams } from '@entities/chat/model';
 import { Button, Modal, Title } from '@shared/ui';
 import { Select } from '@shared/ui/Select';
+import React from 'react';
 
 interface CreateChatModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	onCreate: (model: string) => void;
+	onCreate: ({ model, shortModel }: CreateChatParams) => void;
 }
 
 export const CreateChatModal = ({
@@ -13,26 +16,24 @@ export const CreateChatModal = ({
 	onClose,
 	onCreate,
 }: CreateChatModalProps) => {
-	const models = [
-		{
-			id: 1,
-			value: 'google/gemma-3n-e4b-it:free',
-		},
-		{
-			id: 2,
-			value: 'ChatGPT',
-		},
-		{
-			id: 3,
-			value: 'Claude',
-		},
-	];
-
 	const model = useModelStore(state => state.model);
 	const setModel = useModelStore(state => state.setModel);
+	const shortModel = useModelStore(state => state.shortModel);
+	const setShortModel = useModelStore(state => state.setShortModel);
 
 	const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setModel(e.target.value);
+		const selectedValue = e.target.value;
+		setModel(selectedValue);
+
+		const selectedOption = models.find(
+			option => option.value === selectedValue
+		);
+
+		if (selectedOption) {
+			setShortModel(selectedOption.label);
+		} else {
+			setShortModel('');
+		}
 	};
 
 	return (
@@ -42,7 +43,7 @@ export const CreateChatModal = ({
 			</Title>
 			<form className='flex flex-col gap-4'>
 				<Select value={model} onChange={handleModelChange} options={models} />
-				<Button onClick={() => onCreate(model)}>Create</Button>
+				<Button onClick={() => onCreate({ model, shortModel })}>Create</Button>
 			</form>
 		</Modal>
 	);
