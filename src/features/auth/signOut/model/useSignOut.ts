@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from '@app/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -14,7 +14,7 @@ export const useSignOut = () => {
 			localStorage.removeItem('userId');
 			localStorage.removeItem('login');
 
-			navigate(ROUTE_PATHS.SIGN_IN);
+			navigate(PATH_GENERATORS.signIn());
 
 			toast.success('You have been signed out successfully!');
 		},

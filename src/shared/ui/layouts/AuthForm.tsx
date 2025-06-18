@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from '@app/routes/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import type { SignInCredentials } from '@features/auth/signIn/model';
 import type { SignUpCredentials } from '@features/auth/signUp/model';
 import { Button } from '../Button';
@@ -57,7 +57,11 @@ export const AuthForm = <T,>({
 			<Button type='submit'>{action}</Button>
 			<Link
 				className='ml-auto'
-				to={action === 'Sign up' ? ROUTE_PATHS.SIGN_IN : ROUTE_PATHS.SIGN_UP}
+				to={
+					action === 'Sign up'
+						? PATH_GENERATORS.signIn()
+						: PATH_GENERATORS.signUp()
+				}
 			>
 				{action === 'Sign up' ? 'Sign in' : 'Sign up'}
 			</Link>

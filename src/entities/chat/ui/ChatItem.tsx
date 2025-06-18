@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from '@app/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import type { Message } from '@entities/message/model';
 import clsx from 'clsx';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,13 +11,12 @@ const contentClassNames: Record<Message['from'], string> = {
 
 export const ChatItem = ({ id, shortModel, lastMessage }: Chat) => {
 	const navigate = useNavigate();
-
 	const selectedChatId = useParams().id;
 
 	const isSelected = selectedChatId === id.toString();
 
 	const handleClick = () => {
-		navigate(ROUTE_PATHS.CHAT.replace(':id', id.toString()));
+		navigate(PATH_GENERATORS.chat(id));
 	};
 
 	return (

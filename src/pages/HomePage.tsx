@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from '@app/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import { models } from '@entities/aiModel/data';
 import type { Chat } from '@entities/chat/model';
 import { useUserData } from '@entities/user/model';
@@ -28,14 +28,12 @@ export const HomePage = () => {
 				const updatedChats = queryClient.getQueryData<Chat[]>(['chats']);
 
 				if (updatedChats && updatedChats.length > 0) {
-					navigate(
-						ROUTE_PATHS.CHAT.replace(':id', updatedChats[0].id.toString())
-					);
+					navigate(PATH_GENERATORS.chat(updatedChats[0].id.toString()));
 				} else {
 					console.error('Failed to create chat or retrieve updated chats');
 				}
 			} else {
-				navigate(ROUTE_PATHS.CHAT.replace(':id', chats[0].id));
+				navigate(PATH_GENERATORS.chat(chats[0].id));
 			}
 		} catch (error) {
 			console.error('Error creating or navigating to chat:', error);

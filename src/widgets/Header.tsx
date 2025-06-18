@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from '@app/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import { useUserData } from '@entities/user/model';
 import { UserAccountControls } from '@entities/user/ui';
 import { useSignOut } from '@features/auth/signOut/model';
@@ -13,7 +13,7 @@ export const Header = () => {
 	const isAuth = userId && login;
 
 	const handleSignInClick = () => {
-		navigate(ROUTE_PATHS.SIGN_IN);
+		navigate(PATH_GENERATORS.signIn());
 	};
 
 	return (
@@ -22,7 +22,7 @@ export const Header = () => {
 				<Link
 					className='text-2xl font-bold'
 					color='primary'
-					to={ROUTE_PATHS.HOME}
+					to={PATH_GENERATORS.home()}
 				>
 					AI Chat
 				</Link>

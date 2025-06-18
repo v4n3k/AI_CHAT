@@ -1,10 +1,10 @@
-import { ROUTE_PATHS } from '@app/routes';
+import { PATH_GENERATORS } from '@app/routes';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { signIn } from '../api';
 import type { SignInCredentials } from './types';
-import { toast } from 'react-toastify';
 
 export const useSignIn = () => {
 	const navigate = useNavigate();
@@ -22,7 +22,7 @@ export const useSignIn = () => {
 
 			setCredentials({ login: '', password: '' });
 
-			navigate(ROUTE_PATHS.HOME);
+			navigate(PATH_GENERATORS.home());
 
 			toast.success('You have been signed in successfully!');
 		},
